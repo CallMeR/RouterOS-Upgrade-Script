@@ -19,14 +19,7 @@ check-for-updates
     :delay 60s;
     install
 } else={
-    :if ($rebootRequired) do={
-        # Firmware was upgraded, but not RouterOS, so we need to reboot to finish firmware upgrade
-        :log info ("A reboot is required, 60s later the system is about to reboot.")
-        :delay 60s;
-        /system reboot
-    } else={
-        # No firmware nor RouterOS upgrade available, nothing to do, just log info
-        :log info ("Current RouterOS version on router $[/system identity get name]  is $[/system package update get installed-version], upstream version is $[/system package update get latest-version] (channel:$[/system package update get channel]).")
-        :log info ("No RouterOS update found. Just be relaxed, smile, and stay cool :)")
-    }
+    # No RouterOS upgrade available, nothing to do, just log info
+    :log info ("Current RouterOS version on router $[/system identity get name]  is $[/system package update get installed-version], upstream version is $[/system package update get latest-version] (channel:$[/system package update get channel]).")
+    :log info ("No RouterOS update found. Just be relaxed, smile, and stay cool :)")
 }

@@ -10,13 +10,13 @@
 set channel=$updChannel
 check-for-updates
 ## Wait on slow connections
-:delay 15s;
+:delay 60s;
 ## Important note: "installed-version" was "current-version" on older RoterOSes
 :if ([get installed-version] != [get latest-version]) do={
     ## Notify via Log
     :log info ("Upgrading RouterOS on router $[/system identity get name] from $[/system package update get installed-version] to $[/system package update get latest-version] (channel:$[/system package update get channel])")
-    :log info ("The upgrade will start in 1 minutes :) ")
-    :delay 60s;
+    :log info ("The upgrade will start in 3 minutes :) ")
+    :delay 180s;
     :log info ("Upgrade Start :) ")
     ## Wait for sometime & upgrade
     :delay 10s;
